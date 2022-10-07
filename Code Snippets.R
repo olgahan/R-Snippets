@@ -1,7 +1,7 @@
 
 #Example 1
 #Preprocessing for sentiment analysis at sentence level
-all = all%>% 
+all = all %>% 
   unnest_tokens(sentence, text, token = "sentences")
 
 get_sentiments("bing")
@@ -13,9 +13,9 @@ all_sent = all$sentence %>%
 all_sent = aggregate(all_sent$sentiment, 
                    by = list(Category = all_sent$element_id), FUN = sum)
 
-all=cbind(all,all_sent)
+all = cbind(all,all_sent)
 
-all$Category=NULL
+all$Category = NULL
 
 colnames(all)[which(names(all) == "x")] = "sentiment"
 
